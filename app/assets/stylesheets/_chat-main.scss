@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+}
+
+.chat-main{
+  float: right;
+  height: 100vh;
+  width: calc(100vw - 300px);
+
+  &-header{
+    height: 100px;
+    border-bottom:1px solid #eeeeee;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+    align-items: center;
+    .left-box{
+      height: 64px;
+      width: 135px;
+      margin-top: 15px;
+      &__current-group{
+      height: 30px;
+      width: 135px;
+      font-size: 20px;
+      margin-bottom: 15px;
+      }
+      &__member-list{
+      display: flex;
+      height: 18px;
+      width: 135px;
+      font-size: 12px;
+      color: #999999;
+      }
+    }
+    .chat-main-edit{
+      height: 40px;
+      width: 70px;
+      padding: 0 20px;
+      background-color: #fff;
+      color: #38AEF0;
+      padding-top: 7px;
+      border: 1px solid #38AEF0;
+      text-decoration: none;
+    }
+  }
+
+  .chat-main__messages{
+  height: calc(100vh - 100px - 90px);
+  padding: 46px 40px;
+  background-color: #fafafa;
+    .message{
+      padding-bottom: 40px;
+      .message-upper-info{
+        height: 24px;
+        display: flex;
+        margin-bottom: 10px;
+        &__talker{
+          font-size: 16px;
+          font-weight: bold;
+        }
+        &__data{
+          color: #999999;
+          font-size: 12px;
+          margin-left: 10px;
+        }
+      }
+      .message__text{
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
+    }
+  }
+  
+  &__form{
+    height: 90px;
+    background-color: #eeeeee;
+    position: relative;
+    .new-message{
+      position: absolute;
+      height: 50px;
+      width: calc(100vw - 300px - 80px);
+      margin: 20px 40px;
+      display: flex;
+      &__left{
+        display: flex;
+        justify-content: space-between;
+        width: calc(100vw - 300px - 80px - 100px);
+        background-color: #ffffff;
+        margin-right: 15px;
+        position: relative;
+        .new-message__aicon{
+          color: rgb( 0, 0, 0 );
+          font-size: 1.3rem;
+          position: absolute;
+          top: 15px;
+          right: 15px;
+          cursor: pointer;
+          &__hidden{
+          display: none;
+          }
+        }
+      }
+      &__message{
+        height: 50px;
+        width: 100%;
+      }
+      &__send{
+        height: 50px;
+        width: 100px;
+        text-align: center;
+        padding-top: 12px;
+        color: #fff;
+        background-color: #38AEF0;
+        text-decoration: none;
+      }
+    }
+  }
+}

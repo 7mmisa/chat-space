@@ -1,0 +1,46 @@
+.sidebar
+  .sidebar__header
+    .sidebar__header__box
+      .sidebar__header__box__user-name
+        user_id
+      .sidebar__header__box__menu
+        =link_to "", class: "sidebar__header__box__menu__new-group" do
+          = fa_icon 'pencil-square-o', class: 'icon'
+        =link_to "", class: "sidebar__header__box__menu__edit-user" do
+          = fa_icon 'cog', class: 'icon'
+
+  .sidebar__main
+    .groups
+      .group
+        .group__name
+          group_name
+        .group__latest-message
+          member_name
+
+.chat-main
+  .chat-main-header
+    .left-box
+      .left-box__current-group
+        current_group
+      .left-box__member-list
+        member :misaki
+    =link_to "", class: "chat-main-edit" do
+      Edit
+  .chat-main__messages
+    .message
+      .message-upper-info
+        .message-upper-info__talker
+          misaki
+        .message-upper-info__data
+          time 
+      .message__text
+        text
+  .chat-main__form
+    .new-message
+      .new-message__left
+        %input#message_content.new-message__message{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
+        %label.label
+          = fa_icon 'picture-o', class: "new-message__aicon"
+          %input.new-message__aicon__hidden{type: 'file'}
+      =link_to "", class: "new-message__send" do
+        Send 
