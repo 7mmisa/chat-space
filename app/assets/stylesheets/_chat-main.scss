@@ -7,7 +7,7 @@
   height: 100vh;
   width: calc(100vw - 300px);
 
-  .chat-main-header{
+  &-header{
     height: 100px;
     border-bottom:1px solid #eeeeee;
     background-color: #ffffff;
@@ -72,7 +72,7 @@
     }
   }
   
-  .chat-main__form{
+  &__form{
     height: 90px;
     background-color: #eeeeee;
     position: relative;
@@ -82,30 +82,30 @@
       width: calc(100vw - 300px - 80px);
       margin: 20px 40px;
       display: flex;
-      .new-message__left{
+      &__left{
         display: flex;
         justify-content: space-between;
         width: calc(100vw - 300px - 80px - 100px);
         background-color: #ffffff;
         margin-right: 15px;
-        .new-message__message{
-          height: 50px;
-          width: 100%;
-        }
+        position: relative;
         .new-message__aicon{
-          height: 35px;
-          width: 30px;
           color: rgb( 0, 0, 0 );
           font-size: 1.3rem;
-          margin-top: 15px;
-          padding-right: 10px;
+          position: absolute;
+          top: 15px;
+          right: 15px;
           cursor: pointer;
           &__hidden{
           display: none;
           }
         }
       }
-      .new-message__send{
+      &__message{
+        height: 50px;
+        width: 100%;
+      }
+      &__send{
         height: 50px;
         width: 100px;
         text-align: center;
