@@ -4,10 +4,10 @@
       .sidebar__header__box__user-name
         user_id
       .sidebar__header__box__menu
-        =link_to "https://www.facebook.com/", class: "sidebar__header__box__menu__new-group" do
-          %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
-        =link_to "https://www.facebook.com/", class: "sidebar__header__box__menu__edit-user" do
-          %i.fa.fa-cog{"aria-hidden" => "true"}
+        =link_to "", class: "sidebar__header__box__menu__new-group" do
+          = fa_icon 'pencil-square-o', class: 'icon'
+        =link_to "", class: "sidebar__header__box__menu__edit-user" do
+          = fa_icon 'cog', class: 'icon'
 
   .sidebar__main
     .groups
@@ -24,7 +24,7 @@
         current_group
       .left-box__member-list
         member :misaki
-    =link_to "https://www.facebook.com/", class: "chat-main-edit" do
+    =link_to "", class: "chat-main-edit" do
       Edit
   .chat-main__messages
     .message
@@ -42,7 +42,5 @@
         %label.label
           = fa_icon 'picture-o', class: "new-message__aicon"
           %input.new-message__aicon__hidden{type: 'file'}
-      =link_to "https://www.facebook.com/", class: "new-message__send" do
-        Send
-
-      
+      =link_to "", class: "new-message__send" do
+        Send 
