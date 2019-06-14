@@ -2,7 +2,7 @@
   .sidebar__header
     .sidebar__header__box
       .sidebar__header__box__user-name
-        user_id
+        = current_user.name
       .sidebar__header__box__menu
         =link_to "", class: "sidebar__header__box__menu__new-group" do
           = fa_icon 'pencil-square-o', class: 'icon'
