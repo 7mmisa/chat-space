@@ -12,12 +12,12 @@
   .sidebar__main
     .groups
       - current_user.groups.each do |group|
-      .group
-        = link_to group_messages_path(group) do
-          .group__name
-            = group.name
-          .group__latest-message
-            メッセージはまだありません。
+        .group
+          = link_to group_messages_path(group) do
+            .group__name
+              = group.name
+            .group__latest-message
+              = group.show_last_message
 
 .chat-main
   .chat-main-header
@@ -26,23 +26,16 @@
         current_group
       .left-box__member-list
         member :misaki
-    =link_to "", class: "chat-main-edit" do
+    =  link_to "", class: "chat-main-edit" do
       Edit
   .chat-main__messages
-    .message
-      .message-upper-info
-        .message-upper-info__talker
-          misaki
-        .message-upper-info__data
-          time  
-      .message__text
-        text
+    = render @messages
+
   .chat-main__form
-    .new-message
-      .new-message__left
-        %input#message_content.new-message__message{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
-        %label.label
-          = fa_icon 'picture-o', class: "new-message__aicon"
-            %input.new-message__aicon__hidden{type: 'file'}
-      =link_to "", class: "new-message__send" do
-        Send
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'new_message__message', placeholder: 'type a message'
+      .new_message__aicon
+        = f.label :image, class: 'label' do
+          = fa_icon 'picture-o', class: 'aicon'
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'new_message__send'
