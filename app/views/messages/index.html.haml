@@ -23,9 +23,12 @@
   .chat-main-header
     .left-box
       .left-box__current-group
-        current_group
-      .left-box__member-list
-        member :misaki
+        = @group.name
+      %p.left-box__member-list
+        members :
+        %i
+          - @group.users.each do |user|
+            = user.name
     =  link_to "", class: "chat-main-edit" do
       Edit
   .chat-main__messages
