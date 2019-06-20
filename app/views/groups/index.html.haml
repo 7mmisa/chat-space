@@ -1,0 +1,20 @@
+.sidebar
+  .sidebar__header
+    .sidebar__header__box
+      .sidebar__header__box__user-name
+        = current_user.name
+      .sidebar__header__box__menu
+        =link_to new_group_path do
+          = fa_icon 'pencil-square-o', class: 'sidebar__header__box__menu__new-group'
+        =link_to edit_user_path(current_user) do
+          = fa_icon 'cog', class: 'sidebar__header__box__menu__edit-user'
+
+  .sidebar__main
+    .groups
+      - current_user.groups.each do |group|
+        .group
+          = link_to group_messages_path(group) do
+            .group__name
+              = group.name
+            .group__latest-message
+              メッセージはまだありません。

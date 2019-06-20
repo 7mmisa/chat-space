@@ -2,45 +2,43 @@
   .sidebar__header
     .sidebar__header__box
       .sidebar__header__box__user-name
-        user_id
+        = current_user.name
       .sidebar__header__box__menu
-        =link_to "", class: "sidebar__header__box__menu__new-group" do
-          = fa_icon 'pencil-square-o', class: 'icon'
-        =link_to "", class: "sidebar__header__box__menu__edit-user" do
-          = fa_icon 'cog', class: 'icon'
+        =link_to new_group_path do
+          = fa_icon 'pencil-square-o', class: 'sidebar__header__box__menu__new-group'
+        =link_to edit_user_path(current_user) do
+          = fa_icon 'cog', class: 'sidebar__header__box__menu__edit-user'
 
   .sidebar__main
     .groups
-      .group
-        .group__name
-          group_name
-        .group__latest-message
-          member_name
+      - current_user.groups.each do |group|
+        .group
+          = link_to group_messages_path(group) do
+            .group__name
+              = group.name
+            .group__latest-message
+              = group.show_last_message
 
 .chat-main
   .chat-main-header
     .left-box
       .left-box__current-group
-        current_group
-      .left-box__member-list
-        member :misaki
-    =link_to "", class: "chat-main-edit" do
+        = @group.name
+      %p.left-box__member-list
+        members :
+        %i
+          - @group.users.each do |user|
+            = user.name
+    =  link_to "", class: "chat-main-edit" do
       Edit
   .chat-main__messages
-    .message
-      .message-upper-info
-        .message-upper-info__talker
-          misaki
-        .message-upper-info__data
-          time 
-      .message__text
-        text
+    = render @messages
+
   .chat-main__form
-    .new-message
-      .new-message__left
-        %input#message_content.new-message__message{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
-        %label.label
-          = fa_icon 'picture-o', class: "new-message__aicon"
-          %input.new-message__aicon__hidden{type: 'file'}
-      =link_to "", class: "new-message__send" do
-        Send 
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'new_message__message', placeholder: 'type a message'
+      .new_message__aicon
+        = f.label :image, class: 'label' do
+          = fa_icon 'picture-o', class: 'aicon'
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'new_message__send'

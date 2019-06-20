@@ -51,16 +51,23 @@
         height: 45px;
         width: 260px;
         margin-bottom: 40px;
+        
 
         &__name {
         height: 23px;
         width: 260px;
         font-size: 15px;
+        color: #fff;
+        display: inline-block;
+        text-decoration: none;
         }
         &__latest-message {
         height: 17px;
         width: 260px;
         font-size: 11px;
+        color: #fff;
+        display: inline-block;
+        text-decoration: none;
         }
       }
     }
