@@ -1,4 +1,24 @@
 $(function(){
+  function buildHTML(message){
+    var image = message.image ? `<img src="${message.image}">` : "";
+    var html = `<div class="message">
+                  <div class="message-upper-info">
+                    <div class="message-upper-info__talker">
+                      ${message.user_name}
+                    </div>
+                    <div class="message-upper-info__data">
+                      ${message.created_at}
+                    </div>
+                  </div>
+                  <div class="message__text">
+                      <p class="lower-message__content">
+                        ${message.content}
+                      </p>
+                      ${image}
+                  </div>
+                </div>`
+    return html;
+  }
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -11,5 +31,10 @@ $(function(){
       processData: false,
       contentType: false
     })
-  })
-})
+    .done(function(data){
+      var html = buildHTML(data);
+      $('.chat-main__messages').append(html);
+      $('.new_message__message').val('');
+    });
+  });
+});
