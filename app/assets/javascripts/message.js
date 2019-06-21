@@ -21,6 +21,7 @@ $(function(){
   }
   $('#new_message').on('submit', function(e){
     e.preventDefault();
+    console.log(this);
     var formData = new FormData(this);
     var url = $(this).attr('action')
     $.ajax({
@@ -35,6 +36,12 @@ $(function(){
       var html = buildHTML(data);
       $('.chat-main__messages').append(html);
       $('.new_message__message').val('');
+    })
+    .fail(function(){
+      alert('error');
+    })
+    .always(function(data){
+      $('.new_message__send').prop('disabled', false);
     });
   });
 });
