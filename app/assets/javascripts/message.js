@@ -21,7 +21,6 @@ $(function(){
   }
   $('#new_message').on('submit', function(e){
     e.preventDefault();
-    console.log(this);
     var formData = new FormData(this);
     var url = $(this).attr('action')
     $.ajax({
@@ -34,8 +33,12 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
+      $('.chat-main__messages').animate({ 
+        scrollTop: $('.chat-main__messages')[0].scrollHeight
+      }, 'fast');
       $('.chat-main__messages').append(html);
       $('.new_message__message').val('');
+      $('.chat-main__messages').animate({ scrollTop: $('.chat-main__messages')[0].scrollHeight});
     })
     .fail(function(){
       alert('error');
