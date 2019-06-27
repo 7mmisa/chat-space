@@ -46,4 +46,23 @@ $(function(){
       $('.new_message__send').prop('disabled', false);
     });
   });
+
+  var reloadMessages = function() {
+    last_message_id = $('.message:last').data("message-id");
+    group_id = $('.left-box__current-group').data("group-id");
+    $.ajax({
+      url: '/groups/group_id/api/messages',
+      type: 'get',
+      dataType: 'json',
+      data: {last_id: last_message_id}
+    })
+    .done(function(messages) {
+      
+      console.log('success');
+    })
+    .fail(function() {
+      console.log('error');
+    });
+  };
+  setInterval(reloadMessages, 5000);
 });

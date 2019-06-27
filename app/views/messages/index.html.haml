@@ -22,7 +22,7 @@
 .chat-main
   .chat-main-header
     .left-box
-      .left-box__current-group
+      .left-box__current-group{data: {id: "#{@group.id}"}}
         = @group.name
       %p.left-box__member-list
         members :
