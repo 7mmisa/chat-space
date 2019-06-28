@@ -18,17 +18,16 @@
               = group.name
             .group__latest-message
               = group.show_last_message
-
 .chat-main
   .chat-main-header
     .left-box
-      .left-box__current-group
+      .left-box__current-group{data: {group_id: "#{@group.id}"}}
         = @group.name
       %p.left-box__member-list
-        members :
-        %i
+        members:
+        %i.left-box__member-list__name
           - @group.users.each do |user|
-            = user.name
+            = user.name  
     =  link_to "", class: "chat-main-edit" do
       Edit
   .chat-main__messages
