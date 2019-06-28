@@ -68,5 +68,5 @@ $(function(){
         alert('自動更新に失敗しました');
       });
     }
-  setInterval(reloadMessages, 1000000);
+  setInterval(reloadMessages, 5000);
 });
