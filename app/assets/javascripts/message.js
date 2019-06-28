@@ -47,26 +47,28 @@ $(function(){
   });
 
     var reloadMessages = function() {
-      var last_message_id = $('.message:last').data("message-id");
-      var group_id = $('.left-box__current-group').data("group-id");
-      var url = `/groups/${group_id}/api/messages`;
-      $.ajax({
-        url: url,
-        type: 'get',
-        dataType: 'json',
-        data: {last_id: last_message_id}
-      })
-      .done(function(messages) {
-        var insertHTML = '';
-        messages.forEach(function (message) {
-          insertHTML = buildHTML(message); 
-          $('.chat-main__messages').append(insertHTML);
+      if (window.location.href.match(/\/groups\/\d+\/messages/)){
+        var last_message_id = $('.message:last').data("message-id");
+        var group_id = $('.left-box__current-group').data("group-id");
+        var url = `/groups/${group_id}/api/messages`;
+        $.ajax({
+          url: url,
+          type: 'get',
+          dataType: 'json',
+          data: {last_id: last_message_id}
         })
-        $('.chat-main__messages').animate({scrollTop: $('.chat-main__messages')[0].scrollHeight}, 'fast');
-      })
-      .fail(function() {
-        alert('自動更新に失敗しました');
-      });
-    }
-  setInterval(reloadMessages, 5000);
+        .done(function(messages) {
+          var insertHTML = '';
+          messages.forEach(function (message) {
+            insertHTML = buildHTML(message); 
+            $('.chat-main__messages').append(insertHTML);
+          })
+          $('.chat-main__messages').animate({scrollTop: $('.chat-main__messages')[0].scrollHeight}, 'fast');
+        })
+        .fail(function() {
+          alert('自動更新に失敗しました');
+        });
+      };
+    };
+  setInterval(reloadMessages, 10000);
 });
