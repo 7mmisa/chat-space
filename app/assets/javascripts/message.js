@@ -62,10 +62,11 @@ $(function(){
           insertHTML = buildHTML(message); 
           $('.chat-main__messages').append(insertHTML);
         })
+        $('.chat-main__messages').animate({scrollTop: $('.chat-main__messages')[0].scrollHeight}, 'fast');
       })
       .fail(function() {
         alert('自動更新に失敗しました');
       });
     }
-  setInterval(reloadMessages, 100000000);
+  setInterval(reloadMessages, 1000000);
 });
