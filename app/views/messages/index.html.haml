@@ -14,7 +14,7 @@
       - current_user.groups.each do |group|
         .group
           = link_to group_messages_path(group) do
-            .group__name
+            %p.group__name
               = group.name
             .group__latest-message
               = group.show_last_message
@@ -27,9 +27,10 @@
         members:
         %i.left-box__member-list__name
           - @group.users.each do |user|
-            = user.name  
-    =  link_to "", class: "chat-main-edit" do
-      Edit
+            = user.name 
+    .chat-main-edit
+      = link_to edit_group_path(@group.id) do
+        Edit
   .chat-main__messages
     = render @messages
 

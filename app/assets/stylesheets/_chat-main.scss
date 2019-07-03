@@ -38,12 +38,13 @@
     .chat-main-edit{
       height: 40px;
       width: 70px;
-      padding: 0 20px;
       background-color: #fff;
-      color: #38AEF0;
-      padding-top: 7px;
-      border: 1px solid #38AEF0;
-      text-decoration: none;
+        a{
+        padding: 10px 20px;
+        border: 1px solid #38AEF0;
+        text-decoration: none;
+        color: #38AEF0;
+        }
     }
   }
 
