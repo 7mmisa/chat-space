@@ -78,10 +78,8 @@
   }
 
   .chat-group-user {
-    padding: 0 15px;
     line-height: 50px;
     font-size: 14px;
-    // border-bottom: 1px solid #ddd;
 
     &:after {
       content: "";
@@ -90,10 +88,12 @@
     }
 
     .chat-group-user__name {
+      padding: 0 15px;
       float: left;
     }
 
     .chat-group-user__btn {
+      padding: 0 15px;
       float: right;
       display: inline-block;
       cursor: pointer;
@@ -107,7 +107,8 @@
       }
     }
   }
-  #chat-group-user-8{
+
+  .chat-group-user.clearfix{
     border-bottom: 1px solid #ddd;
   }
 
