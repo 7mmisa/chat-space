@@ -32,7 +32,7 @@
           - @group.users.each do |user|
             - if (user != current_user)
               #chat-group-user-8.chat-group-user.clearfix.js-chat-member
-                = f.hidden_field :user_ids, name: "group[user_ids][]", id: 'chat-group-user-8.chat-group-user.clearfix.js-chat-member', value: current_user.id
+                = f.hidden_field :user_ids, name: "group[user_ids][]", id: 'chat-group-user-8.chat-group-user.clearfix.js-chat-member', value: user.id
 
                 %p.chat-group-user__name
                   = user.name
