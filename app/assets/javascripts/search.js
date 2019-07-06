@@ -59,5 +59,8 @@ $(function() {
     $("#member_search_result").on('click', '.user-search-remove', function(){
       $(this).parent().remove();
     });
+    $("#chat-group-user-8.chat-group-user.clearfix.js-chat-member").on('click', '.user-search-remove', function(){
+      $(this).parent().remove();
+    });
   });
 });
