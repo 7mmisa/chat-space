@@ -31,7 +31,7 @@ $(function(){
       processData: false,
       contentType: false
     })
-    .done(function(data){
+    .done(function(data){ 
       var html = buildHTML(data);
       $('.chat-main__messages').animate({ 
         scrollTop: $('.chat-main__messages')[0].scrollHeight}, 'fast');
